@@ -1,12 +1,12 @@
 #!/bin/bash
-source "/vagrant/scripts/common.sh"
 
 # Eclipse IDE
 ECLIPSE_TARGET=/home/ubuntu/eclipse
 
 installEclipse () {
   echo "Installing Eclipse IDE and plugins"
-	awk 'BEGIN{RS="^$";ORS="";getline;gsub("\r","");print>ARGV[1]}' /vagrant/scripts/install-eclipse.sh
+	awk 'BEGIN{RS="\r|\n|\r\n|\n\r";ORS="\n"}{print}' /vagrant/scripts/install-eclipse > /vagrant/scripts/install-eclipse.sh
+	chmod +x /vagrant/scripts/install-eclipse.sh
   /vagrant/scripts/install-eclipse.sh -f -c /vagrant/scripts/install-eclipse.cfg ${ECLIPSE_TARGET}
 }
 
@@ -16,13 +16,9 @@ changeOwner () {
   chown -R  ubuntu:ubuntu ${ECLIPSE_TARGET}
 }
 
-funcs=(installEclipse changeOwner)
-
 echo "Setup Eclipse"
 
-for func in "${funcs[@]}"
-do
-  $func || fail $func
-done
+installEclipse 
+changeOwner
 
 echo "Eclipse setup complete"

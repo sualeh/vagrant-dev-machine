@@ -1,5 +1,4 @@
 #!/bin/bash
-source "/vagrant/scripts/common.sh"
 
 function chgPassword {
   echo "Change password of Ubuntu user"
@@ -14,6 +13,9 @@ EOF
   expect ~/chgPasswd.sh
   echo "Finished Ubuntu user setup"
 }
+
+
+# -----
 
 echo "Setup Ubuntu user"
 

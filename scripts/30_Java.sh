@@ -1,5 +1,4 @@
 #!/bin/bash
-source "/vagrant/scripts/common.sh"
 
 function installJava {
   echo "Install Open JDK"
@@ -13,13 +12,12 @@ function setupEnvVars {
   ln -s ${JAVA_HOME} /usr/local/java
 }
 
-funcs=(installJava setupEnvVars)
+
+# -----
 
 echo "Setup Java"
 
-for func in "${funcs[@]}"
-do
-  $func || fail $func
-done
+installJava 
+setupEnvVars
 
 echo "Java setup complete"

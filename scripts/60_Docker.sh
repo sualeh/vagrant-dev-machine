@@ -1,5 +1,4 @@
 #!/bin/bash
-source "/vagrant/scripts/common.sh"
 
 # https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
 
@@ -32,13 +31,14 @@ installDocker () {
   apt-get -y -q install docker-ce
 }
 
-funcs=(useRepositoryOverHTTPS addDockerGPGKey setupStableRepository installDocker)
+
+# -----
 
 echo "Setup Docker"
 
-for func in "${funcs[@]}"
-do
-  $func || fail $func
-done
+useRepositoryOverHTTPS 
+addDockerGPGKey 
+setupStableRepository 
+installDocker
 
 echo "Docker setup complete"

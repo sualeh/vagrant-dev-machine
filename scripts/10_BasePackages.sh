@@ -1,5 +1,4 @@
 #!/bin/bash
-source "/vagrant/scripts/common.sh"
 
 repoUpdate () {
   echo "Install base Ubuntu packages"
@@ -25,13 +24,14 @@ installOthers () {
   apt-get install -y -q curl unzip expect
 }
 
-funcs=(repoUpdate installVBGuest setupXfce4 installOthers)
+
+# -----
 
 echo "Install base packages"
 
-for func in "${funcs[@]}"
-do
-  $func || fail $func
-done
+repoUpdate 
+installVBGuest 
+setupXfce4 
+installOthers
 
 echo "Base packages install complete"

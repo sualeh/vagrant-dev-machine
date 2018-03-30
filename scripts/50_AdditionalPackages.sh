@@ -1,5 +1,4 @@
 #!/bin/bash
-source "/vagrant/scripts/common.sh"
 
 installBuildTools () {
 	echo 'Install Apache Maven'
@@ -14,19 +13,18 @@ installBuildTools () {
 }
 
 installOthers () {
-  echo 'Install Chromium'
+  # echo 'Install Chromium'
   apt-get install -y -q chromium-browser
   echo 'Install git, Graphviz'
   apt-get install -y -q git graphviz
 }
 
-funcs=(installBuildTools installOthers)
+
+# -----
 
 echo "Install additional packages"
 
-for func in "${funcs[@]}"
-do
-  $func || fail $func
-done
+installBuildTools 
+installOthers
 
 echo "Additional install packages complete"

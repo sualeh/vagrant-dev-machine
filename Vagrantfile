@@ -67,13 +67,13 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.network :private_network, ip: '10.211.55.102'
   config.vm.hostname = "playdev"
-  config.vm.provision "shell", name: "Install base packages", path: "scripts/10_installBasePackages.sh"
-  config.vm.provision "shell", name: "Set password", path: "scripts/20_setPassword.sh"
-  config.vm.provision "shell", name: "Setup display manager", inline: "sudo dpkg-reconfigure xdm"
-  config.vm.provision "shell", name: "Setup display manager", inline: "systemctl restart xdm.service"
-  #config.vm.provision "shell", name: "Install Java", path: "scripts/30_setupJava.sh"
-  #config.vm.provision "shell", name: "Install additional packages", path: "scripts/50_installAdditionalPackages.sh"
-  #config.vm.provision "shell", name: "Install Docker CE", path: "scripts/60_setupDocker.sh"
-  config.vm.provision "shell", name: "Install Eclipse", path: "scripts/40_setupEclipse.sh"
+  config.vm.provision "shell", path: "scripts/10_BasePackages.sh"
+  config.vm.provision "shell", path: "scripts/20_SetPassword.sh"
+  config.vm.provision "shell", inline: "sudo dpkg-reconfigure xdm"
+  config.vm.provision "shell", inline: "systemctl restart xdm.service"
+  config.vm.provision "shell", path: "scripts/30_Java.sh"
+  config.vm.provision "shell", path: "scripts/40_Eclipse.sh"
+  config.vm.provision "shell", path: "scripts/50_AdditionalPackages.sh"
+  config.vm.provision "shell", path: "scripts/60_Docker.sh"
 
 end
