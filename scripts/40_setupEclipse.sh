@@ -1,32 +1,28 @@
 #!/bin/bash
-
 source "/vagrant/scripts/common.sh"
 
+# Eclipse IDE
+ECLIPSE_TARGET=/home/ubuntu/eclipse
+
 installEclipse () {
-	echo "install eclipse IDE and plugins"
-	${ECLIPSE_RES_DIR}/install-eclipse -f -c ${ECLIPSE_RES_DIR}/install-eclipse.cfg ${ECLIPSE_TARGET}
+  echo "Installing Eclipse IDE and plugins"
+	awk 'BEGIN{RS="^$";ORS="";getline;gsub("\r","");print>ARGV[1]}' /vagrant/scripts/install-eclipse.sh
+  /vagrant/scripts/install-eclipse.sh -f -c /vagrant/scripts/install-eclipse.cfg ${ECLIPSE_TARGET}
 }
 
 changeOwner () {
-	echo "Changing owner of eclipse directories"
-	chown -R -L ubuntu:ubuntu ${ECLIPSE_TARGET}
-	chown -R  ubuntu:ubuntu ${ECLIPSE_TARGET}
+  echo "Changing owner of Eclipse directories"
+  chown -R -L ubuntu:ubuntu ${ECLIPSE_TARGET}
+  chown -R  ubuntu:ubuntu ${ECLIPSE_TARGET}
 }
 
-setupPath () {
-	echo "setup eclipse path"
-	cp ${ECLIPSE_RES_DIR}/eclipse.sh /etc/profile.d/.
-	echo 'source /etc/profile.d/eclipse.sh' >> /home/ubuntu/.bahsrc
-}
+funcs=(installEclipse changeOwner)
 
-
-echo "setup Eclipse"
-
-funcs=(installEclipse changeOwner setupPath )
+echo "Setup Eclipse"
 
 for func in "${funcs[@]}"
 do
-	$func || fail $func
+  $func || fail $func
 done
 
-echo "eclipse setup complete"
+echo "Eclipse setup complete"

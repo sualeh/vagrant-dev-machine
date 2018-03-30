@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
   config.vm.box_check_update = false
-  config.vm.define :devmachine do |t|
+  config.vm.define :playdev do |t|
   end
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -66,14 +66,14 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.network :private_network, ip: '10.211.55.102'
-  config.vm.hostname = "devvm"
-  config.vm.provision "shell", path: "scripts/10_InstallBasePackages.sh"
-  config.vm.provision "shell", path: "scripts/20_setPassword.sh"
-  config.vm.provision "shell", inline: "sudo dpkg-reconfigure xdm"
-  config.vm.provision "shell", inline: "systemctl restart xdm.service"
-  config.vm.provision "shell", path: "scripts/30_setupJava.sh"
-  config.vm.provision "shell", path: "scripts/40_setupEclipse.sh"
-  config.vm.provision "shell", path: "scripts/50_setupMiniconda.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/60_setup_spark.sh"
+  config.vm.hostname = "playdev"
+  config.vm.provision "shell", name: "Install base packages", path: "scripts/10_installBasePackages.sh"
+  config.vm.provision "shell", name: "Set password", path: "scripts/20_setPassword.sh"
+  config.vm.provision "shell", name: "Setup display manager", inline: "sudo dpkg-reconfigure xdm"
+  config.vm.provision "shell", name: "Setup display manager", inline: "systemctl restart xdm.service"
+  #config.vm.provision "shell", name: "Install Java", path: "scripts/30_setupJava.sh"
+  #config.vm.provision "shell", name: "Install additional packages", path: "scripts/50_installAdditionalPackages.sh"
+  #config.vm.provision "shell", name: "Install Docker CE", path: "scripts/60_setupDocker.sh"
+  config.vm.provision "shell", name: "Install Eclipse", path: "scripts/40_setupEclipse.sh"
 
 end
