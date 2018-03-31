@@ -1,7 +1,6 @@
 # Vagrant Development Machine
-=========================================
 
-# Introduction
+## Introduction
 
 > Forked from [martinprobson/vagrant-dev-machine](https://github.com/martinprobson/vagrant-dev-machine)
 
@@ -18,7 +17,7 @@ This is a Vagrant project to build and spin up a virtual machine with the follow
   - Travis 
 * Chrome
 
-# Getting Started
+## Getting Started
 
 1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. [Download and install Vagrant](http://www.vagrantup.com/downloads.html).
@@ -29,17 +28,17 @@ This is a Vagrant project to build and spin up a virtual machine with the follow
 
  **NOTE** This virtual machine will take a significant time to provision initially whilst it downloads and builds the packages required.
 
-# User
+## User
 
 The user id of the VM is `ubuntu` with a password of `ubuntu`.
 
-# Shared Folder
+## Shared Folder
 
 Vagrant automatically mounts the folder containing the Vagrant file from the host machine into
 the guest machine as `/vagrant` inside the guest.
 
 
-# Managment of Vagrant Virtual Machine
+## Managment of Vagrant Virtual Machine
 
 To stop the virtual machine and preserve all setup/data within the virtual machine:
 
@@ -63,12 +62,12 @@ vagrant destroy -f
 
 Then issue `vagrant up` command as usual.
 
-# Known Issues/To Do
+## Known Issues/ To Do
 
 1. Running `vagrant provision` multiple times can cause issues - need to fix.
 2. Java heapsize in Eclipse needs to be adjusted to run Scala IDE - Eclipse shows you how to do this on first startup.
 
-# Credits
+## Credits
 
 * Thanks to [Martin Probson](https://github.com/martinprobson) for the original [Vagrant virtual machine](https://github.com/martinprobson/vagrant-dev-machine).
 * Thanks to [Budhaditya](https://github.com/budhash) for the [silent eclipse](https://github.com/budhash/install-eclipse) install script.
