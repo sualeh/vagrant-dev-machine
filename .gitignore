@@ -1,3 +1,4 @@
+.vagrant/
 deploy/
 scripts/install-eclipse.sh
 *.log

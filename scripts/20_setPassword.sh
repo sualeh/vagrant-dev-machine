@@ -14,11 +14,16 @@ EOF
   echo "Finished Ubuntu user setup"
 }
 
-
+function restartXDM {
+  dpkg-reconfigure xdm
+  systemctl restart xdm.service
+}
+	
 # -----
 
 echo "Setup Ubuntu user"
 
 chgPassword
+restartXDM
 
 echo "Ubuntu user setup complete"
