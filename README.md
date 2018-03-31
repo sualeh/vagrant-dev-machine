@@ -69,5 +69,5 @@ Then issue `vagrant up` command as usual.
 
 ## Credits
 
-* Thanks to [Martin Probson](https://github.com/martinprobson) for the original [Vagrant virtual machine](https://github.com/martinprobson/vagrant-dev-machine).
+* Thanks to [Martin Robson](https://github.com/martinprobson) for the original [Vagrant virtual machine](https://github.com/martinprobson/vagrant-dev-machine).
 * Thanks to [Budhaditya](https://github.com/budhash) for the [silent eclipse](https://github.com/budhash/install-eclipse) install script.
