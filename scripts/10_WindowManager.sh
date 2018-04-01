@@ -1,7 +1,9 @@
 #!/bin/bash
 
 repoUpdate () {
-  echo "Install base Ubuntu packages"
+  echo "Add contrib repo"
+  echo "deb http://ftp.debian.org/debian stretch-backports main contrib" >> /etc/apt/sources.list
+  echo "Update"
   apt-get update -y -q
 }
 
@@ -10,33 +12,21 @@ installVBGuest () {
   apt-get install -y -q virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
 }
 
-installOthers () {
-  echo 'Install unzip, curl, expect'
-  apt-get install -y -q curl unzip expect
-}
-
 setupXFCE4 () {
   echo "Install XFCE4"
-  apt-get install -y -q xfce4 xdm xfce4-terminal
-  echo "Remove xterm"
-  apt-get remove -y -q xterm
-  sed -i 's/allowed_users=.*$/allowed_users=anybody/' /etc/X11/Xwrapper.config
-  dpkg-reconfigure xdm
+  apt-get install -y -q xfce4 terminator
+  cat ${XFCE4_PROFILE} >> /home/${USER}/.bashrc_local
 }
 
-setupLXDE () {
-  echo "Install LXDE"
-  # apt-get -y -q install --no-install-recommends lubuntu-desktop
-  sed -i 's/allowed_users=.*$/allowed_users=anybody/' /etc/X11/Xwrapper.config
-	#apt-get install lxde
-	#apt-get install xserver-xorg-video-all xserver-xorg
+installOthers () {
+  echo 'Install unzip, curl, expect'
+  apt-get install -y -q curl stow unzip expect
 }
 
-setupUbuntu () {
-  echo "Install Ubuntu desktop"
-  apt-get -y -q install --no-install-recommends ubuntu-desktop
-  sed -i 's/allowed_users=.*$/allowed_users=anybody/' /etc/X11/Xwrapper.config
+setupDefaults () {
+  echo 'Setup defaults'
 }
+
 
 # -----
 
@@ -46,5 +36,6 @@ repoUpdate
 installVBGuest
 installOthers
 setupXFCE4
+setupDefaults
 
 echo "Base packages install complete"

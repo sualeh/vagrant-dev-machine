@@ -1,29 +1,24 @@
 #!/bin/bash
 
 function chgPassword {
-  echo "Change password of Ubuntu user"
+  echo "Change password of ${USER} user"
   apt-get -qq install expect
   tee ~/chgPasswd.sh << EOF
   set timeout 20
-  spawn sudo passwd ubuntu
-  expect "Enter new UNIX password:" {send "ubuntu\\r"}
-  expect "Retype new UNIX password:" {send "ubuntu\\r"}
+  spawn sudo passwd ${USER}
+  expect "Enter new UNIX password:" {send "${USER}\\r"}
+  expect "Retype new UNIX password:" {send "${USER}\\r"}
   interact
 EOF
   expect ~/chgPasswd.sh
-  echo "Finished Ubuntu user setup"
+  echo "Finished ${USER} user setup"
 }
 
-function restartXDM {
-  dpkg-reconfigure xdm
-  systemctl restart xdm.service
-}
-	
+
 # -----
 
-echo "Setup Ubuntu user"
+echo "Setup ${USER} user"
 
 chgPassword
-restartXDM
 
-echo "Ubuntu user setup complete"
+echo "Completed setup for ${USER} user"
