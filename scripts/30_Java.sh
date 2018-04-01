@@ -15,9 +15,9 @@ function setupEnvVars {
 
 # -----
 
-echo "Setup Java"
+echo "START - Setup Java"
 
 installJava 
 setupEnvVars
 
-echo "Java setup complete"
+echo "END - Setup Java"

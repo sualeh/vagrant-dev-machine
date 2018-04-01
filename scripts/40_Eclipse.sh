@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Eclipse IDE
-ECLIPSE_TARGET=/home/ubuntu/eclipse
+CURRENT_USER=vagrant
+ECLIPSE_TARGET=/home/$CURRENT_USER/eclipse
 
 installEclipse () {
   echo "Installing Eclipse IDE and plugins"
@@ -13,16 +14,16 @@ installEclipse () {
 
 changeOwner () {
   echo "Changing owner of eclipse directories"
-  chown -R -L ${USER}:${USER} ${ECLIPSE_TARGET}
-  chown -R  ${USER}:${USER} ${ECLIPSE_TARGET}
+  chown -R -L ${CURRENT_USER}:${CURRENT_USER} ${ECLIPSE_TARGET}
+  chown -R  ${CURRENT_USER}:${CURRENT_USER} ${ECLIPSE_TARGET}
 }
 
 
 # -----
 
-echo "Setup Eclipse"
+echo "START - Setup Eclipse"
 
 installEclipse
 changeOwner
 
-echo "Eclipse setup complete"
+echo "END - Setup Eclipse"

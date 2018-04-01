@@ -15,7 +15,6 @@ installVBGuest () {
 setupXFCE4 () {
   echo "Install XFCE4"
   apt-get install -y -q xfce4 terminator
-  cat ${XFCE4_PROFILE} >> /home/${USER}/.bashrc_local
 }
 
 installOthers () {
@@ -30,7 +29,7 @@ setupDefaults () {
 
 # -----
 
-echo "Install base packages"
+echo "START - Install base packages"
 
 repoUpdate
 installVBGuest
@@ -38,4 +37,4 @@ installOthers
 setupXFCE4
 setupDefaults
 
-echo "Base packages install complete"
+echo "END - Install base packages"

@@ -17,8 +17,8 @@ EOF
 
 # -----
 
-echo "Setup ${USER} user"
+echo "START - Setup ${USER} user"
 
 chgPassword
 
-echo "Completed setup for ${USER} user"
+echo "END - Setup ${USER} user"

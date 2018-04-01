@@ -35,11 +35,11 @@ installDocker () {
 
 # -----
 
-echo "Setup Docker"
+echo "START - Setup Docker"
 
 useRepositoryOverHTTPS 
 addDockerGPGKey 
 setupStableRepository 
 installDocker
 
-echo "Docker setup complete"
+echo "END - Setup Docker"

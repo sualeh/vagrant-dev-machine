@@ -1,12 +1,12 @@
 # Vagrant Development Machine
 
-## Introduction
-
 > Forked from [martinprobson/vagrant-dev-machine](https://github.com/martinprobson/vagrant-dev-machine)
+
+## Introduction
 
 This is a Vagrant project to build and spin up a virtual machine with the following:
 
-* Ubuntu 16.04 LTE
+* Debian
 * Java 8 (OpenJDK)
 * XFCE4 desktop
 * Eclipse Oxygen
@@ -15,13 +15,13 @@ This is a Vagrant project to build and spin up a virtual machine with the follow
   - Apache Maven
   - Gradle
   - Travis 
-* Chrome
+* Firefox (Iceweasel)
 
 ## Getting Started
 
 1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. [Download and install Vagrant](http://www.vagrantup.com/downloads.html).
-3. Go to [releases](https://github.com/martinprobson/vagrant-dev-machine/releases) and download and extract the latest source of this project.
+3. Clone this project.
 5. In your terminal change your directory into the project directory (i.e. `cd vagrant-dev-machine` )
 6. Run ```vagrant up``` to create the virtual machine.
 7. Execute ```vagrant ssh``` to login to the virtual machine or login to XFCE via VirtualBox.
@@ -30,7 +30,7 @@ This is a Vagrant project to build and spin up a virtual machine with the follow
 
 ## User
 
-The user id of the VM is `ubuntu` with a password of `ubuntu`.
+The user id of the VM is `vagrant` with a password of `vagrant`.
 
 ## Shared Folder
 
@@ -40,7 +40,7 @@ the guest machine as `/vagrant` inside the guest.
 
 ## Managment of Vagrant Virtual Machine
 
-To stop the virtual machine and preserve all setup/data within the virtual machine:
+To stop the virtual machine and preserve all setup/ data within the virtual machine:
 
 ```
 vagrant halt
@@ -65,7 +65,7 @@ Then issue `vagrant up` command as usual.
 ## Known Issues/ To Do
 
 1. Running `vagrant provision` multiple times can cause issues - need to fix.
-2. Java heapsize in Eclipse needs to be adjusted to run Scala IDE - Eclipse shows you how to do this on first startup.
+
 
 ## Credits
 

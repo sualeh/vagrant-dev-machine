@@ -13,8 +13,8 @@ installBuildTools () {
 }
 
 installOthers () {
-  # echo 'Install Chromium'
-  apt-get install -y -q chromium-browser
+  echo 'Install Firefox (Iceweasel)'
+  apt-get install -y -q iceweasel
   echo 'Install git, Graphviz'
   apt-get install -y -q git graphviz
 }
@@ -22,9 +22,9 @@ installOthers () {
 
 # -----
 
-echo "Install additional packages"
+echo "START - Install additional packages"
 
 installBuildTools 
 installOthers
 
-echo "Additional install packages complete"
+echo "END - Install additional packages"
