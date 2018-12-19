@@ -2,7 +2,7 @@
 
 function installJava {
   echo "Install Open JDK"
-  apt-get install -y openjdk-8-jdk-headless
+  apt-get install -y -q openjdk-8-jdk-headless
 }
 
 function setupEnvVars {

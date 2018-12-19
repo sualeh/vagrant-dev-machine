@@ -13,23 +13,23 @@ useRepositoryOverHTTPS () {
 }
 
 addDockerGPGKey () {
-  echo 'Add Docker’s official GPG key for Debian'
-  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+  echo 'Add Docker’s official GPG key for Ubuntu'
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 }
 
 setupStableRepository () {
-  echo 'Setup the stable repository for Debian'
+  echo 'Setup the stable repository for Ubuntu'
   add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable"   
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"   
   echo 'Update'
   apt-get update
+  apt-cache policy docker-ce
 }
 
 installDocker () {
   echo 'Install Docker CE'
   apt-get -y -q install docker-ce
+  usermod -aG docker vagrant
 }
 
 
